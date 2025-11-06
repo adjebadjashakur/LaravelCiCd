@@ -7,9 +7,12 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      #1 
+      #1 recuperer le code source 
       - name: Récupérer le code source
         uses: actions/checkout@v5
       #2 executer les test
       - name: Run test
         run: cd app1 && composer install && cp .env.example .env && php artisan key:gen && php artisan test
+      # 3 construire image
+      - name:  Build image
+        run: docker build -t shakur21dev/laravelcicd:latest .
