@@ -16,3 +16,10 @@ jobs:
       # 3 construire image
       - name:  Build image
         run: docker build -t shakur21dev/laravelcicd:latest .
+      # 4 Login to docker 
+      - name:  Login to docker image
+        run: docker/login-action@v2
+        with:
+            username: ${{secret.DOCKER_USERNAME}}
+            password: ${{secret.DOCKER_TOCKEN}}
+            
